@@ -9,5 +9,12 @@ before_install:
 script:
   - docker run chamikasys/frontend npm run test -- --coverage
 
-
-  
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-1"
+  app: "react-frontend"
+  env: "ReactFrontend-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-1-892586227525"
+  bucket_path: "react-frontend"
+  on:
+    branch: master
