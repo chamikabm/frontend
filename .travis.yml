@@ -1,0 +1,13 @@
+# Inoder to run the docker files we need super user premissions. that's why we have enabled sudo: required.
+sudo: required
+servies:
+  - docker
+
+before_install:
+  - docker build -t chamikasys/frontend -f Dockerfile.dev .
+
+script:
+  - docker run chamikasys/frontend npm run test -- --coverage
+
+
+  
