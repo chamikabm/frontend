@@ -1,6 +1,13 @@
 FROM node:alpine
+
 WORKDIR './app'
+
 COPY package.json .
 RUN npm install
+
+#As we are copiyng files from the docker compose file this copy step is kind of redundent, 
+# but in the production setup, we anyway have to copy the build files into the docker container. So let's keep this
+# COPY instruction as to kind of a reminder for the production depolyment.
 COPY . . 
+
 CMD ["npm", "run", "start"]
